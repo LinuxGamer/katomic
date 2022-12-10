@@ -1,6 +1,3 @@
-# from PySide6.QtWidgets import QApplication, QMainWindow, QToolBar, QStatusBar, QPushButton
-# from PySide6.QtGui import QAction, QIcon
-# from PySide6.QtCore import QSize
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
