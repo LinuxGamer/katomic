@@ -14,6 +14,9 @@ class MainWindow(QMainWindow):
         #Menubar and menus
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu("&File")
+        settings_menu = menu_bar.addMenu("&Settings")
+        help_menu = menu_bar.addMenu("&Help")
+
         quit_action = file_menu.addAction("Quit")
         quit_action.triggered.connect(self.quit_app)
 
@@ -24,51 +27,17 @@ class MainWindow(QMainWindow):
         edit_menu.addAction("Undo")
         edit_menu.addAction("Redo")
 
-        #A bunch of other menu options just for the fun of it
-        menu_bar.addMenu("Window")
-        menu_bar.addMenu("Setting")
-        menu_bar.addMenu("Help")
-
-        #Working with toolbars
-        toolbar = QToolBar("my main toolbar")
-        toolbar.setIconSize(QSize(16,16))
-        self.addToolBar(toolbar)
-
-        #Add the quit action to the toolbar
-        toolbar.addAction(quit_action)
-        quit_action.triggered.connect(self.quit_app)
-
-        action1 = QAction("Some Action", self)
-        action1.setStatusTip("Status message for some action")
-        action1.triggered.connect(self.toolbar_button_click)
-        toolbar.addAction(action1)
-
-        action2 = QAction(QIcon("start.png"), "Some other action", self)
-        action2.setStatusTip("Status message for some other action")
-        action2.triggered.connect("self.toolbar_button_click")
-        toolbar.addAction(action2)
-
-        toolbar.addSeparator()
-        # toolbar.addWidget(QPushButton("Click here"))
-
-        # Working with status bars
-        self.setStatusBar(QStatusBar(self))
-        button1 = QPushButton("BUTTON1")
-        button1.clicked.connect(self.button1_clicked)
-        button_about = QPushButton("About")
-        button_about.clicked.connect(self.button_clicked_about)
-
-        self.setCentralWidget(button_about)
-
-
+        about_action = help_menu.addAction("About")
+        about_action.setStatusTip("About KAtomic")
+        about_action.triggered.connect(self.button_clicked_about)
 
     def button1_clicked(self):
         print("clicked on the button")
 
-    #About
+    # About Button
     def button_clicked_about(self):
-        ret = QMessageBox.about(self,"Message Title",
-                                        "Some about message")
+        ret = QMessageBox.about(self,"About KAtomic",
+                                        "KAtomic is an alternative to the deprecated Atom text editor from GitHub. Written in Python, using the PySide6 module to bring a Qt GUI. GitHub Repo: https://github.com/LinuxGamer/katomic")
         if ret == QMessageBox.Ok :
             print("User chose OK")
         else :
