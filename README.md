@@ -1,0 +1,2 @@
+# katomic
+Qt Atom Replacement
